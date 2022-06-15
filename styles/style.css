@@ -15,6 +15,7 @@ body {
 }
 
 .search-bar {
+  margin-left: 200px;
   border-radius: 1px;
   background: #fff;
 }
