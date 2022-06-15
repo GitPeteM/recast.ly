@@ -8,29 +8,29 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      videoList: exampleVideoData,
+      videoList: [],
       videoPlayer: exampleVideoData[0]
     };
-    // console.log(this.state.videoList[0]);
+    this.addVideoList = this.addVideoList.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  // data of new videos is provided in searchYouTube, as a parameter to the success callback function.
+  addVideoList (newVideoList) {
+    // console.log(newVideoList);
+    this.setState({videoList: newVideoList, videoPlayer: newVideoList[0]});
+  }
 
-  // addVideoList () {
-  //   // create a newVideoList variable
-  //   let newVideoList = [];
-  //   let tempObj = {};
-  //   // loop through exampleVideoData
-  //   for (let i = 0; i < exampleVideoData.length; i++) {
-  //     tempObj.keyId = i;
-  //     tempObj.Video = exampleVideoData[i];
-  //     newVideoList.push(tempObj);
-  //   }
-  //   this.setState({videoList: newVideoList});
-  //   // reset state with .setState to newVideoList
-  // }
+  handleSubmit(event, query) {
+    event.preventDefault();
 
+    searchYouTube(query, this.addVideoList);
+    // use the returned list of videos
+    // grab the first video within the list and occupy the video player
+    // use the rest of the list to occupy videolist
+  }
 
-  onVideoClick(event, videoObj) {
+  onVideoClick(videoObj) {
     this.setState({videoPlayer: videoObj});
   }
 
@@ -39,7 +39,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <Search/>
+            <Search handleSubmit={this.handleSubmit}/>
           </div>
         </nav>
         <div className="row">

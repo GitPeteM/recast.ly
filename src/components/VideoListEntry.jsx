@@ -16,7 +16,7 @@ var VideoListEntry = ({video, click}) => {
     //so because we have an onclick function, rather than grabbing the "event" which is the entire div below
     //we refactored our onclick to take in a video obj as a parameter that is passed in to videoentry since it's the current video, this happens because the onclick attaches the video obj itself to the div so we can reference it/callback to our click function with it. At first we only had a onclick that contained the entire div as the event.target, we refactored it into a callback to contain both. Idk if I explained that poorly. I'm sorry lol
     //              cb        invoke our click function
-    <div onClick={(event) => { click(event, video); }} className="video-list-entry media">
+    <div onClick={(event) => { click(video); }} className="video-list-entry media">
       <div className="media-left media-middle">
         <img className="media-object" src={video.snippet.thumbnails.default.url} alt="" />
       </div>
