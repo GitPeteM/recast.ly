@@ -13,6 +13,7 @@ class App extends React.Component {
     };
     this.addVideoList = this.addVideoList.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    searchYouTube('react', this.addVideoList);
   }
 
   // data of new videos is provided in searchYouTube, as a parameter to the success callback function.
