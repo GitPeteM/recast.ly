@@ -13,6 +13,7 @@ class App extends React.Component {
     };
     this.addVideoList = this.addVideoList.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    //componentDidMount, just not a separate function.
     searchYouTube('react', this.addVideoList);
   }
 
